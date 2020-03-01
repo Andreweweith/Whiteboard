@@ -1,0 +1,75 @@
+{
+  "name": "whiteboard_react",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "CSI418 Spring 2020 Team 7"
+  },
+  "build": {
+    "appId": "com.electron.whiteboard_react",
+    "productName": "Whiteboard",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.4",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.9.0",
+    "@material-ui/system": "^4.9.3",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/user-event": "^7.2.1",
+    "cross-env": "^7.0.0",
+    "electron-is-dev": "^1.1.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0",
+    "typeface-roboto": "0.0.75"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "scripts": {
+    "start": "rescripts start",
+    "build": "rescripts build",
+    "test": "rescripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"cross-env BROWSER=none rescripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder build -w"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "0.0.13",
+    "@rescripts/rescript-env": "0.0.11",
+    "concurrently": "^5.1.0",
+    "electron": "^8.0.2",
+    "electron-builder": "^22.3.2",
+    "electron-reload": "^1.5.0",
+    "node-sass": "^4.13.1",
+    "typescript": "^3.8.3",
+    "wait-on": "^4.0.1"
+  },
+  "rescripts": [
+    "env"
+  ]
+}
