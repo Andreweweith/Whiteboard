@@ -1,5 +1,6 @@
 const electron = require('electron');
 const app = electron.app;
+const screen = electron.screen;
 const path = require('path');
 const isDev = require('electron-is-dev');
 //require('electron-reload');
@@ -7,10 +8,12 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow;
 
-function createWindow() {
+function createWindow(w, h) {
+
     mainWindow = new BrowserWindow({
-        width: 900,
-        height: 680,
+        width: w,
+        height: h,
+        //frame: false,
         webPreferences: {
             nodeIntegration: true,
         },
@@ -27,7 +30,12 @@ function createWindow() {
     });
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+    var width = screen.width;
+    var height = screen.height;
+
+    createWindow(width, height);
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

@@ -6,6 +6,10 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal';
 import grey from '@material-ui/core/colors/grey';
+import Box from '@material-ui/core/Box';
+import { flexbox } from '@material-ui/system';
+import HighlightedButton from './components/HighlightedButton';
+import VerticalTabs from "./components/TabPanel";
 
 function App() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -28,21 +32,17 @@ function App() {
         <CssBaseline />
         <div>
           <NavBar />
+          <Box height="300%">
+              <VerticalTabs></VerticalTabs>
+          </Box>
+
+          {/*<Box bgcolor='background.paper' display='flex' flexWrap='wrap'
+               justifyContent='center' alignItems='center' style={{ margin: '20px'}}>
+              <HighlightedButton></HighlightedButton>
+          </Box>*/}
         </div>
       </ThemeProvider>
   )
 }
-
-/*const useStyles = makeStyles({
-  button: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
-  },
-});*/
 
 export default App;

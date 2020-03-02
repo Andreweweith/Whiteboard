@@ -38,14 +38,11 @@ const NavBar = () => {
                     <Typography variant='title' color='secondary'>
                         <Box fontWeight='bold' letterSpacing={8}>WHITEBOARD</Box>
                         <Typography variant='subtitle2' color='secondary'>
-                            <Box fontStyle='italic' fontSize={12}>"It can be anything!"</Box>
+                            <Box fontStyle='italic' fontSize={12}>"It's not Blackboard!"</Box>
                         </Typography>
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <div align='center'>
-                <p>This is content</p>
-            </div>
         </div>
     )
 };
