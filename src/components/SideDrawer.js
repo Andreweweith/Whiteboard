@@ -152,7 +152,7 @@ export default function MiniDrawer() {
                 <Divider />
                 <List>
                     {['First Class', 'Second Class', 'Third Class?', 'Fourth Class.'].map((text, index) => (
-                        <ListItem button key={text} /*action={onClick}*/ /*class={classes.listButton}*/>
+                        <ListItem key={text} /*action={onClick}*/ /*class={classes.listButton}*/>
                             <HighlightedButton>
 
                             </HighlightedButton>
