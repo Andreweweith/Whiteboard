@@ -1,6 +1,5 @@
 const electron = require('electron');
 const app = electron.app;
-const screen = electron.screen;
 const path = require('path');
 const isDev = require('electron-is-dev');
 //require('electron-reload');
@@ -31,10 +30,11 @@ function createWindow(w, h) {
 }
 
 app.on('ready', () => {
-    var width = screen.width;
-    var height = screen.height;
+    const screen = electron.screen;
+    const display = screen.getPrimaryDisplay();
+    const area = display.workArea;
 
-    createWindow(width, height);
+    createWindow(area.width, area.height);
 });
 
 app.on('window-all-closed', () => {
