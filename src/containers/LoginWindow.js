@@ -11,6 +11,7 @@ import Input from "@material-ui/core/Input";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Checkbox from "@material-ui/core/Checkbox";
+import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -66,7 +67,7 @@ const useStyles = makeStyles(theme => ({
                 color: Grey[100],
             },
             '&:hover fieldset': {
-                borderColor: Teal[300],
+                borderColor: Teal[400],
             },
             '&.Mui-focused fieldset': {
                 borderColor: Teal[700],
@@ -105,57 +106,66 @@ function LoginWindow(props) {
 
     return (
         <Grid container xs={12} className={classes.root}>
-            <Paper elevation={4} className={classes.loginArea}>
-                <Grid container xs={11} className={classes.textGrid}>
-                    <Typography variant='title' color='secondary'>
-                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD</Box>
-                        <Typography variant='subtitle2' color='secondary'>
-                            <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
+            <Fade in={true} timeout={1500}>
+                <Paper elevation={4} className={classes.loginArea}>
+                    <Grid container xs={11} className={classes.textGrid}>
+                        <Typography variant='title' color='secondary'>
+                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD</Box>
+                            <Typography variant='subtitle2' color='secondary'>
+                                <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
+                            </Typography>
                         </Typography>
-                    </Typography>
-                    <form className={classes.textField} onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-                        <TextField
-                            variant={"outlined"}
-                            margin={"normal"}
-                            required
-                            fullWidth
-                            id={"email"}
-                            label={"Email"}
-                            name={"email"}
-                            autoComplete={"email"}
-                            autoFocus
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                            block
-                            disabled={!validateForm()}
-                        >
-                            Sign In
-                        </Button>
-                        {/*<FormControl className={classes.formControl}>
+                        <form className={classes.textField} onSubmit={handleSubmit} noValidate autoComplete={"off"}>
+                            <Fade in={true} timeout={2000}>
+                                <TextField
+                                    variant={"outlined"}
+                                    margin={"normal"}
+                                    required
+                                    fullWidth
+                                    id={"email"}
+                                    label={"Email"}
+                                    name={"email"}
+                                    autoComplete={"email"}
+                                    autoFocus
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
+                                />
+                            </Fade>
+                            <Fade in={true} timeout={3000}>
+                                <TextField
+                                    variant="outlined"
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
+                                />
+                            </Fade>
+                            <Fade in={true} timeout={4000}>
+                                <FormControlLabel
+                                    control={<Checkbox value="remember" color="primary" />}
+                                    label="Remember me"
+                                />
+                            </Fade>
+                            <Fade in={true} timeout={5000}>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    className={classes.submit}
+                                    block
+                                    disabled={!validateForm()}
+                                >
+                                    Sign In
+                                </Button>
+                            </Fade>
+                            {/*<FormControl className={classes.formControl}>
                             <InputLabel htmlFor="component-outlined">Email</InputLabel>
                             <Input id="component-outlined" value={email} onChange={handleChange} />
                         </FormControl>
@@ -163,9 +173,10 @@ function LoginWindow(props) {
                             <InputLabel htmlFor="component-outlined">Password</InputLabel>
                             <Input id="component-outlined" value={password} onChange={handleChange} />
                         </FormControl>*/}
-                    </form>
-                </Grid>
-            </Paper>
+                        </form>
+                    </Grid>
+                </Paper>
+            </Fade>
         </Grid>
     )
 }

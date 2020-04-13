@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grey from "@material-ui/core/colors/grey";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Teal from '@material-ui/core/colors/teal';
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -58,7 +60,7 @@ const useStyles = makeStyles(theme => ({
                 color: Grey[100],
             },
             '&:hover fieldset': {
-                borderColor: Teal[300],
+                borderColor: Teal[400],
             },
             '&.Mui-focused fieldset': {
                 borderColor: Teal[700],
@@ -87,26 +89,37 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function MessageWindow() {
+/*function MessageWindow(props) {
     const classes = useStyles();
+
+    const [buttonId, setButtonId] = useState("");
 
     return (
         <Grid container xs={12} className={classes.root}>
             <Paper elevation={4} className={classes.chatArea}>
-                <Grid container xs={11} className={classes.textGrid}>
-                    <Grid container xs={11} className={classes.messageGrid}>
-                        <span className={classes.textRight}>Hey!</span>
-                        <span className={classes.textLeft}>This is sample text!</span>
+                <Grid container xs={12} direction={'column'}>
+                    <Typography variant='title' color='secondary'>
+                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}>{buttonId}Class-1</Box>
+                        {/!*<Typography variant='subtitle2' color='secondary'>
+                            <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
+                        </Typography>*!/}
+                    </Typography>
+                    <Grid container xs={11} className={classes.textGrid}>
+                        <Grid container xs={11} className={classes.messageGrid}>
+                            <span className={classes.textRight}>Hey!</span>
+                            <span className={classes.textLeft}>This is sample text!</span>
+                        </Grid>
+                        <TextField id='outlined-basic' label='Message'
+                                   variant='outlined'
+                                   className={classes.textField}
+                                   InputLabelProps={classes.textLabel}/>
                     </Grid>
-                    <TextField id='outlined-basic' label='Message'
-                               variant='outlined'
-                               className={classes.textField}
-                               InputLabelProps={classes.textLabel}/>
                 </Grid>
             </Paper>
 
         </Grid>
     )
-}
+}*/
 
-export default MessageWindow;
+/*
+export default MessageWindow;*/
