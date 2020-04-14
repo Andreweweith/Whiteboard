@@ -26,6 +26,7 @@ import Home from "../components/HomeButton";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import MessageWindow from "./MessageWindow";
 
 const drawerWidth = 240;
 
@@ -199,7 +200,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function PageShell(Page, previous) {
+/*function PageShell(Page, previous) {
     return props => (
         <div className="page">
             <ReactCSSTransitionGroup
@@ -213,9 +214,9 @@ function PageShell(Page, previous) {
             </ReactCSSTransitionGroup>
         </div>
     );
-};
+};*/
 
-function MessageWindow() {
+/*function MessageWindow() {
     const classes = useStyles();
 
     const [content, setContent] = useState("Home");
@@ -226,9 +227,9 @@ function MessageWindow() {
                 <Grid container xs={12} direction={'column'}>
                     <Typography variant='title' color='secondary'>
                         <Box fontSize={24} fontWeight='bold' letterSpacing={8}>{content}</Box>
-                        {/*<Typography variant='subtitle2' color='secondary'>
+                        {/!*<Typography variant='subtitle2' color='secondary'>
                             <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
-                        </Typography>*/}
+                        </Typography>*!/}
                     </Typography>
                     <Grid container xs={11} className={classes.textGrid}>
                         <Grid container xs={11} className={classes.messageGrid}>
@@ -244,7 +245,7 @@ function MessageWindow() {
             </Paper>
         </Grid>
     )
-}
+}*/
 
 function HomeWindow({ match }) {
     const classes = useStyles();
@@ -254,7 +255,7 @@ function HomeWindow({ match }) {
     const history = useHistory();
     //let match = useRouteMatch();
 
-    function MessageWindowOne(){
+    /*function MessageWindowOne(){
         return (
             <MessageWindow setContent={"Class 1"}/>
         );
@@ -273,7 +274,7 @@ function HomeWindow({ match }) {
         return (
             <MessageWindow content={"Class 4"}/>
         );
-    }
+    }*/
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -403,20 +404,29 @@ function HomeWindow({ match }) {
 
                     {/* CONTENT AREA CONTAINER */}
                     <Grid container xs={11}>
-                        {/*<Switch>
+                        <Switch>
                             <Route path='/home/class-1'>
                                 <MessageWindow buttonId={'Class-1'}/>
                             </Route>
-                        </Switch>*/}
+                            <Route path='/home/class-2'>
+                                <MessageWindow buttonId={'Class-2'}/>
+                            </Route>
+                            <Route path='/home/class-3'>
+                                <MessageWindow buttonId={'Class-3'}/>
+                            </Route>
+                            <Route path='/home/class-4'>
+                                <MessageWindow buttonId={'Class-4'}/>
+                            </Route>
+                        </Switch>
                         {/*<MessageWindow />*/}
                         {/*<Routes />*/}
                         {/*<LoginWindow />*/}
-                        <Switch>
+                        {/*<Switch>
                             <Route path="/home/class-1" component={PageShell(MessageWindowOne)}/>
                             <Route path="/home/class-2" component={PageShell(MessageWindowTwo)}/>
                             <Route path="/home/class-3" component={PageShell(MessageWindowThree)}/>
                             <Route path="/home/class-4" component={PageShell(MessageWindowFour)}/>
-                        </Switch>
+                        </Switch>*/}
                     </Grid>
                 </Grid>
             </Grid>

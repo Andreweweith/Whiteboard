@@ -89,7 +89,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-/*function MessageWindow(props) {
+function MessageWindow(props) {
     const classes = useStyles();
 
     const [buttonId, setButtonId] = useState("");
@@ -100,9 +100,9 @@ const useStyles = makeStyles(theme => ({
                 <Grid container xs={12} direction={'column'}>
                     <Typography variant='title' color='secondary'>
                         <Box fontSize={24} fontWeight='bold' letterSpacing={8}>{buttonId}Class-1</Box>
-                        {/!*<Typography variant='subtitle2' color='secondary'>
+                        {/*<Typography variant='subtitle2' color='secondary'>
                             <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
-                        </Typography>*!/}
+                        </Typography>*/}
                     </Typography>
                     <Grid container xs={11} className={classes.textGrid}>
                         <Grid container xs={11} className={classes.messageGrid}>
@@ -119,7 +119,6 @@ const useStyles = makeStyles(theme => ({
 
         </Grid>
     )
-}*/
+}
 
-/*
-export default MessageWindow;*/
+export default MessageWindow;
