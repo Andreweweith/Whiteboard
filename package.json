@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "body-parser": "latest",
+    "cors": "^2.8.5",
     "express": "latest",
     "mongoose": "^5.9.7",
     "react": "^16.13.0",

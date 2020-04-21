@@ -90,11 +90,35 @@ function LoginWindow(props) {
         return email.length > 0 && password.length > 0;
     }
 
+    function check(text)
+    {
+        console.log(text);
+        if(text == "{\"message\":\"User successfully logged in!\"}")
+            {
+                console.log("Got to this point");
+                props.history.push("/home");
+            }
+
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
 
         try {
-            props.history.push("/home");
+            fetch("http://localhost:4000/signin/", {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                }),
+            })
+            .then(res => res.text())
+            .then(text => check(text));
+
+
         } catch (e) {
             alert(e.message);
         }
