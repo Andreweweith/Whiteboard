@@ -27,6 +27,12 @@ import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import MessageWindow from "./MessageWindow";
+import MessageWindow2 from "./MessageWindow2";
+import MessageWindow3 from "./MessageWindow3";
+import MessageWindow4 from "./MessageWindow4";
+import Fade from "@material-ui/core/Fade";
+import { BrowserRouter as Router } from "react-router-dom";
+import EmptyMessageWindow from "./EmptyMessageWindow";
 
 const drawerWidth = 240;
 
@@ -252,7 +258,11 @@ function HomeWindow({ match }) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
+    const [state, setState] = React.useState("Loading...");
+
     const history = useHistory();
+
+
     //let match = useRouteMatch();
 
     /*function MessageWindowOne(){
@@ -283,6 +293,8 @@ function HomeWindow({ match }) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+
 
     return (
         <div className={classes.root}>
@@ -405,19 +417,33 @@ function HomeWindow({ match }) {
                     {/* CONTENT AREA CONTAINER */}
                     <Grid container xs={11}>
                         <Switch>
+                            <Route path='/home' exact>
+                                <Fade in={true} timeout={1000}>
+                                    <EmptyMessageWindow/>
+                                </Fade>
+                            </Route>
                             <Route path='/home/class-1'>
-                                <MessageWindow buttonId={'Class-1'}/>
+                                <Fade in={true} timeout={1000}>
+                                    <MessageWindow buttonId={'Class-1'}/>
+                                </Fade>
                             </Route>
                             <Route path='/home/class-2'>
-                                <MessageWindow buttonId={'Class-2'}/>
+                                <Fade in={true} timeout={1000}>
+                                    <MessageWindow2 buttonId={'Class-2'}/>
+                                </Fade>
                             </Route>
                             <Route path='/home/class-3'>
-                                <MessageWindow buttonId={'Class-3'}/>
+                                <Fade in={true} timeout={1000}>
+                                    <MessageWindow3 buttonId={'Class-3'}/>
+                                </Fade>
                             </Route>
                             <Route path='/home/class-4'>
-                                <MessageWindow buttonId={'Class-4'}/>
+                                <Fade in={true} timeout={1000}>
+                                    <MessageWindow4 buttonId={'Class-4'}/>
+                                </Fade>
                             </Route>
                         </Switch>
+
                         {/*<MessageWindow />*/}
                         {/*<Routes />*/}
                         {/*<LoginWindow />*/}

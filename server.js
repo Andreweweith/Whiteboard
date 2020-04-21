@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
-const MONGOURL = 'mongodb+srv://admin:adminpassword@cluster0-loslm.mongodb.net/test?retryWrites=true&w=majority'
+const MONGOURL = 'mongodb+srv://wbadmin:adminpassword@whiteboardapp-623rs.mongodb.net/test?retryWrites=true&w=majority'
 const app = express();
 
 mongoose.connect(MONGOURL).then(() => console.log("MongoDB Connected")).catch(error => console.log(error));
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-app.post("/signup/", async (req, res) => {
+app.post("/signup", async (req, res) => {
     try {
         req.body.password = bcrypt.hashSync(req.body.password, 10);
         var user = new User(req.body);
@@ -42,7 +42,7 @@ app.post("/signup/", async (req, res) => {
     }
 });
 
-app.post("/signin", async (req, res) => {
+app.post("/login", async (req, res) => {
     try {
         var user = await User.findOne({ email: req.body.email }).exec();
         if(!user)
@@ -61,7 +61,7 @@ app.post("/signin", async (req, res) => {
     }
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
     console.log('Server listening on ' + port);
