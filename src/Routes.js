@@ -13,7 +13,7 @@ export default function Routes({ appProps }) {
         <Switch>
             <AppliedRoute path="/" exact component={Landing} appProps={appProps} />
             <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
-            <AppliedRoute path='/signup' component={Signup} appProprs={appProps} />
+            <AppliedRoute path='/signup' component={Signup} appProps={appProps} />
             <AppliedRoute path="/home" component={HomeWindow} appProps={appProps} />
             {/* Finally, catch all unmatched routes */}
             <Route component={NotFound} />
