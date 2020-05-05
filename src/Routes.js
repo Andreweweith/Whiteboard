@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./containers/LoginWindow";
 import Signup from "./containers/SignupWindow";
 import Landing from "./containers/LandingWindow";
-import MessageWindow from "./containers/MessageWindow";
 import NotFound from "./containers/NotFound";
 import AppliedRoute from "./components/AppliedRoute";
 import HomeWindow from "./containers/HomeWindow";
