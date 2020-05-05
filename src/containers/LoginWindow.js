@@ -6,12 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Teal from '@material-ui/core/colors/teal';
 import { Button, FormGroup, FormControl, FormControlLabel } from '@material-ui/core';
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Checkbox from "@material-ui/core/Checkbox";
 import Fade from "@material-ui/core/Fade";
+import { useAppContext } from "../libs/contextLib";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -81,10 +80,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LoginWindow(props) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const { isAuthenticated, userHasAuthenticated, name, setName, userEmail, setUserEmail } = useAppContext();
 
-    const [error, setError] = useState(false);
+    const [stateIsAuthenticated, setStateIsAuthenticated] = isAuthenticated;
+    const [stateName, setStateName] = name;
+    const [stateUserEmail, setStateUserEmail] = userEmail;
+
+    const [email, setEmail] = useState("");
+
+    const [password, setPassword] = useState("");
 
     const classes = useStyles();
 
@@ -92,12 +96,14 @@ function LoginWindow(props) {
         return email.length > 0 && password.length > 0;
     }
 
-    function check(text)
+    function push(user)
     {
-        console.log(text);
-        if(text == "{\"message\":\"User successfully logged in!\"}")
+        if(user)
             {
+                setStateName(user.name);
+                setStateUserEmail(user.email);
                 console.log("Got to this point");
+                setStateIsAuthenticated(true);
                 props.history.push("/home");
             }
         else {
@@ -116,11 +122,12 @@ function LoginWindow(props) {
                 },
                 body: JSON.stringify({
                     email: email,
+                    name: name,
                     password: password
                 }),
             })
-            .then(res => res.text())
-            .then(text => check(text));
+            .then(res => res.json())
+                .then(JSON => push(JSON));
 
 
         } catch (e) {

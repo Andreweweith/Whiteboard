@@ -7,6 +7,8 @@ const MONGOURL = 'mongodb+srv://admin:adminpassword@cluster0-loslm.mongodb.net/t
 const app = express();
 app.use(cors());
 
+const WebSocket = require('ws');
+
 mongoose.connect(MONGOURL).then(() => console.log("MongoDB Connected")).catch(error => console.log(error));
 
 const userSchema = mongoose.Schema({
@@ -109,20 +111,23 @@ app.post("/signin/", async (req, res) => {
         {
             return res.status(400).send({ message: "Invalid Password" });
         }
-        res.send({ message: "User successfully logged in!" });
+        res.send(user);
 
     } catch (error) {
         res.status(500).send(error);
     }
 });
 
-/*
-app.get("/getservers/", async (req, res) => {
-    try{
-
-    }
+const wss = new WebSocket.Server({ port: 3030 });
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(data) {
+        wss.clients.forEach(function each(client) {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
+                client.send(data);
+            }
+        });
+    });
 });
-*/
 
 const port = process.env.PORT || 4000;
 

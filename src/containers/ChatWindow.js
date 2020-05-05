@@ -6,7 +6,7 @@ const URL = 'ws://localhost:3030'
 
 class ChatWindow extends Component {
     state = {
-        name: 'Bob',
+        name: String,
         messages: [],
     }
 
@@ -51,7 +51,7 @@ class ChatWindow extends Component {
                     <input
                         type="text"
                         id={'name'}
-                        placeholder={'Enter your name...'}
+                        placeholder={'Enter your name'}
                         value={this.state.name}
                         onChange={e => this.setState({ name: e.target.value })}
                     />

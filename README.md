@@ -1,6 +1,8 @@
-Whiteboard App by Connor Walsh, Andrew Weith, Alec Comley, and Alex Kim.
+Whiteboard App by Connor Walsh, Andrew Weith, Alec Comley.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Chat Window components obtained from [here](https://github.com/bitlabstudio/blogpost-react-websocket-chat).
 
 ## Available Scripts
 

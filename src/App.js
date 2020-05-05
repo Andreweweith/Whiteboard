@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import NavBar from './components/NavBar';
+import React, { useState } from 'react';
 import './App.scss';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -7,8 +6,13 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import teal from '@material-ui/core/colors/teal';
 import grey from '@material-ui/core/colors/grey';
 import Routes from "./Routes";
+import { AppContext } from './libs/contextLib';
 
 function App() {
+    const [isAuthenticated, userHasAuthenticated] = useState(false);
+    const [name, setName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
     const theme = React.useMemo(
@@ -28,7 +32,13 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <div>
-                <Routes />
+                <AppContext.Provider value={{
+                    isAuthenticated: [isAuthenticated, userHasAuthenticated],
+                    name: [name, setName],
+                    userEmail: [userEmail, setUserEmail]
+                }}>
+                    <Routes />
+                </AppContext.Provider>
             </div>
         </ThemeProvider>
     )
