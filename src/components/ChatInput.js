@@ -21,7 +21,7 @@ class ChatInput extends Component {
             >
                 <input
                     type="text"
-                    placeholder={'Enter message...'}
+                    placeholder={'Enter message'}
                     value={this.state.message}
                     onChange={e => this.setState({ message: e.target.value })}
                 />

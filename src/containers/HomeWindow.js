@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Grid from "@material-ui/core/Grid";
-//import MessageWindow from "./MessageWindow";
 import {Link, Route, useHistory, Switch } from "react-router-dom";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Grey from "@material-ui/core/colors/grey";
@@ -23,17 +22,10 @@ import ListItem from "@material-ui/core/ListItem";
 import Button from "@material-ui/core/Button";
 import ListItemText from "@material-ui/core/ListItemText";
 import Home from "../components/HomeButton";
-import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import MessageWindow from "./MessageWindow";
-import MessageWindow2 from "./MessageWindow2";
-import MessageWindow3 from "./MessageWindow3";
-import MessageWindow4 from "./MessageWindow4";
 import Fade from "@material-ui/core/Fade";
-import { BrowserRouter as Router } from "react-router-dom";
 import EmptyMessageWindow from "./EmptyMessageWindow";
 import ChatWindow from "./ChatWindow";
+import { useAppContext } from "../libs/contextLib";
 
 const drawerWidth = 240;
 
@@ -213,7 +205,11 @@ function HomeWindow(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
-    const [state, setState] = React.useState("Loading...");
+    const { isAuthenticated, userHasAuthenticated, name, setName, userEmail, setUserEmail } = useAppContext();
+
+    const [stateIsAuthenticated, setStateIsAuthenticated] = isAuthenticated;
+    const [stateName, setStateName] = name;
+    const [stateUserEmail, setStateUserEmail] = userEmail;
 
     const history = useHistory();
 
@@ -347,29 +343,23 @@ function HomeWindow(props) {
                     <Grid container xs={11}>
                         <Switch>
                             <Route path='/home' exact>
-                                <Fade in={true} timeout={1000}>
-                                    <EmptyMessageWindow/>
-                                </Fade>
+                                <EmptyMessageWindow/>
                             </Route>
                             <Route path='/home/class-1'>
-                                <Fade in={true} timeout={1000}>
-                                    <ChatWindow />
-                                </Fade>
+                                <ChatWindow />
+                                <Button>{ name }</Button>
                             </Route>
                             <Route path='/home/class-2'>
-                                <Fade in={true} timeout={1000}>
-                                    <ChatWindow />
-                                </Fade>
+                                <ChatWindow />
+                                <Button>{ name }</Button>
                             </Route>
                             <Route path='/home/class-3'>
-                                <Fade in={true} timeout={1000}>
-                                    <ChatWindow />
-                                </Fade>
+                                <ChatWindow />
+                                <Button>{ name }</Button>
                             </Route>
                             <Route path='/home/class-4'>
-                                <Fade in={true} timeout={1000}>
-                                    <ChatWindow />
-                                </Fade>
+                                <ChatWindow />
+                                <Button>{ name }</Button>
                             </Route>
                         </Switch>
 

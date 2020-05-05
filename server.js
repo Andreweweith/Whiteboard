@@ -7,7 +7,13 @@ const mongoURL = 'mongodb+srv://admin:adminpassword@cluster0-loslm.mongodb.net/t
 const app = express();
 app.use(cors());
 
+<<<<<<< HEAD
 mongoose.connect(mongoURL).then(() => console.log("MongoDB Connected")).catch(error => console.log(error));
+=======
+const WebSocket = require('ws');
+
+mongoose.connect(MONGOURL).then(() => console.log("MongoDB Connected")).catch(error => console.log(error));
+>>>>>>> temp
 
 const userSchema = mongoose.Schema({
     email:{
@@ -21,10 +27,62 @@ const userSchema = mongoose.Schema({
         required: true,
         minLength: 5
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> temp
     name:{
         type: String,
         required: true,
         minLength: 2
+<<<<<<< HEAD
+=======
+    }
+});
+
+const serverSchema = mongoose.Schema({
+
+    server_id:{
+        type: String,
+        required: true,
+        unique: 1,
+        minLength: 8
+    },
+
+    user_list:{
+        type: [String],
+        required: true
+    },
+
+    all_messages:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Messages'
+    }
+
+});
+
+const messageSchema = mongoose.Schema({
+
+    sender:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
+    content:{
+        type: String,
+        minLength: 1
+    },
+
+    server_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Server',
+        unique: 1
+    },
+
+    time_sent:{
+        type: String
+>>>>>>> temp
     }
 });
 
@@ -67,6 +125,10 @@ const messageSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 const Server = mongoose.model('Server', serverSchema);
 const Messages = mongoose.model('Messages', messageSchema);
+<<<<<<< HEAD
+=======
+
+>>>>>>> temp
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -85,7 +147,7 @@ app.post("/signup/", async (req, res) => {
     }
 });
 
-app.post("/signin", async (req, res) => {
+app.post("/signin/", async (req, res) => {
     try {
         let user = await User.findOne({ email: req.body.email }).exec();
         if(!user)
@@ -96,12 +158,22 @@ app.post("/signin", async (req, res) => {
         {
             return res.status(400).send({ message: "Invalid Password" });
         }
-        res.send({ message: "User successfully logged in!" });
-        // Add logged in page pusher here
+        res.send(user);
 
     } catch (error) {
         res.status(500).send(error);
     }
+});
+
+const wss = new WebSocket.Server({ port: 3030 });
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(data) {
+        wss.clients.forEach(function each(client) {
+            if (client !== ws && client.readyState === WebSocket.OPEN) {
+                client.send(data);
+            }
+        });
+    });
 });
 
 const port = process.env.PORT || 4000;

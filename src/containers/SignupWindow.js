@@ -96,27 +96,21 @@ function SignupWindow(props) {
     function check(text)
     {
         console.log(text);
-        if(text == "{\"message\":\"User successfully logged in!\"}")
-            {
-                console.log("Got to this point");
-                props.history.push("/login");
-            }
-        else {
-            document.getElementById("email").setAttribute("error", "");
-        }
+        props.history.push("/login");
     }
 
     function handleSubmit(event) {
         event.preventDefault();
 
         try {
-            fetch("http://localhost:4000/signin/", {
+            fetch("http://localhost:4000/signup/", {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     email: email,
+                    name: name,
                     password: password
                 }),
             })
