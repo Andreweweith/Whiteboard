@@ -22,10 +22,64 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         minLength: 5
+    },
+
+    name:{
+        type: String,
+        required: true,
+        minLength: 2
+    }
+});
+
+const serverSchema = mongoose.Schema({
+
+    server_id:{
+        type: String,
+        required: true,
+        unique: 1,
+        minLength: 8
+    },
+
+    user_list:{
+        type: [String],
+        required: true
+    },
+
+    all_messages:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Messages'
+    }
+
+});
+
+const messageSchema = mongoose.Schema({
+
+    sender:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
+    content:{
+        type: String,
+        minLength: 1
+    },
+
+    server_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Server',
+        unique: 1
+    },
+
+    time_sent:{
+        type: String
     }
 });
 
 const User = mongoose.model('User', userSchema);
+const Server = mongoose.model('Server', serverSchema);
+const Messages = mongoose.model('Messages', messageSchema);
+
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -44,7 +98,7 @@ app.post("/signup/", async (req, res) => {
     }
 });
 
-app.post("/signin", async (req, res) => {
+app.post("/signin/", async (req, res) => {
     try {
         var user = await User.findOne({ email: req.body.email }).exec();
         if(!user)
@@ -56,12 +110,19 @@ app.post("/signin", async (req, res) => {
             return res.status(400).send({ message: "Invalid Password" });
         }
         res.send({ message: "User successfully logged in!" });
-        // Add logged in page pusher here
 
     } catch (error) {
         res.status(500).send(error);
     }
 });
+
+/*
+app.get("/getservers/", async (req, res) => {
+    try{
+
+    }
+});
+*/
 
 const port = process.env.PORT || 4000;
 
