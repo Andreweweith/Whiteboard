@@ -140,21 +140,30 @@ function LandingWindow(props) {
                 <Paper elevation={4} className={classes.loginArea}>
                     <Grid container xs={11} className={classes.textGrid}>
                         <Typography variant='title' color='secondary'>
-                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD HOME</Box>
+                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD</Box>
                             <Typography variant='subtitle2' color='secondary'>
                                 <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
                             </Typography>
                         </Typography>
-                        <Button
-                            component={Link} to={'/login'}
-                            className={classes.button}>
-                            LOGIN
-                        </Button>
-                        <Button
-                            component={Link} to={'/signup'}
-                            className={classes.button}>
-                            SIGNUP
-                        </Button>
+                        <span>&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;</span>
+                        <Grid container direction={'row'} xs={6} justify={'center'}>
+                            <Button
+                                variant={'contained'}
+                                component={Link} to={'/login'}
+                                className={classes.button}>
+                                LOGIN
+                            </Button>
+                            <span>&nbsp;&nbsp;</span>
+                            <span>&nbsp;&nbsp;</span>
+                            <span>&nbsp;&nbsp;</span>
+                            <Button
+                                variant={'contained'}
+                                component={Link} to={'/signup'}
+                                className={classes.button}>
+                                SIGNUP
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Paper>
             </Fade>

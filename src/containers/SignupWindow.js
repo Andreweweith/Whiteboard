@@ -135,9 +135,6 @@ function SignupWindow(props) {
                     <Grid container xs={11} className={classes.textGrid}>
                         <Typography variant='title' color='secondary'>
                             <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD SIGNUP</Box>
-                            <Typography variant='subtitle2' color='secondary'>
-                                <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
-                            </Typography>
                         </Typography>
                         <form className={classes.textField} onSubmit={handleSubmit} noValidate autoComplete={"off"}>
                             <Fade in={true} timeout={2000}>

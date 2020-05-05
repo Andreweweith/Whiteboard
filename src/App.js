@@ -21,7 +21,7 @@ function App() {
                 palette: {
                     type: prefersDarkMode ? 'dark' : 'light',
                     primary: { light: grey[300], main: grey[900], dark: grey[900] },
-                    secondary: { light: teal[300], main: teal[400], dark: teal[400] },
+                    secondary: { light: teal[300], main: teal.A200, dark: teal.A200 },
                 },
             }),
         [prefersDarkMode],

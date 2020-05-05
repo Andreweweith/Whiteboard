@@ -92,14 +92,12 @@ const useStyles = makeStyles(theme => ({
 function MessageWindow(props) {
     const classes = useStyles();
 
-    const [buttonId, setButtonId] = useState("");
-
     return (
         <Grid container xs={12} className={classes.root}>
             <Paper elevation={4} className={classes.chatArea}>
                 <Grid container xs={12} direction={'column'}>
                     <Typography variant='title' color='secondary'>
-                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}>{buttonId}Please select a class.</Box>
+                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}>Please select a class.</Box>
                         {/*<Typography variant='subtitle2' color='secondary'>
                             <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
                         </Typography>*/}

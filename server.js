@@ -118,6 +118,20 @@ app.post("/signin/", async (req, res) => {
     }
 });
 
+app.post("/pullmessages/", async (req, res) => {
+    try {
+        const server = await Server.findOne({ server_id: "Main" }).exec();
+        if(!server)
+        {
+            return res.status(400).send({ message: "No server exists" });
+        }
+        res.send(server);
+
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 const wss = new WebSocket.Server({ port: 3030 });
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(data) {

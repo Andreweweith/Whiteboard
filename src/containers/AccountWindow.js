@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grey from "@material-ui/core/colors/grey";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Teal from '@material-ui/core/colors/teal';
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
+import {useAppContext} from "../libs/contextLib";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -86,32 +87,34 @@ const useStyles = makeStyles(theme => ({
         paddingLeft: '95%',
         //marginLeft: theme.spacing(20),
         //padding: theme.spacing(10),
+    },
+    accountText:{
+        paddingTop: "10px",
+        paddingBottom: "10px",
+        paddingLeft: "15px"
     }
 }));
 
-function MessageWindow(props) {
+function AccountWindow(props) {
+
     const classes = useStyles();
+    const { isAuthenticated, userHasAuthenticated, name, setName, userEmail, setUserEmail } = useAppContext();
+
+    const [stateIsAuthenticated, setStateIsAuthenticated] = isAuthenticated;
+    const [stateName, setStateName] = name;
+    const [stateUserEmail, setStateUserEmail] = userEmail;
 
     return (
         <Grid container xs={12} className={classes.root}>
             <Paper elevation={4} className={classes.chatArea}>
                 <Grid container xs={12} direction={'column'}>
                     <Typography variant='title' color='secondary'>
-                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}>Class-1</Box>
-                        {/*<Typography variant='subtitle2' color='secondary'>
-                            <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
-                        </Typography>*/}
+                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}><u>Account Info</u></Box>
                     </Typography>
-                    <Grid container xs={11} className={classes.textGrid}>
-                        <Grid container xs={11} className={classes.messageGrid}>
-                            <span className={classes.textRight}>Hey!</span>
-                            <span className={classes.textLeft}>This is sample text!</span>
-                        </Grid>
-                        <TextField id='outlined-basic' label='Message'
-                                   variant='outlined'
-                                   className={classes.textField}
-                                   InputLabelProps={classes.textLabel}/>
-                    </Grid>
+                    <Typography variant='title' className={classes.accountText}>
+                        <Box fontSize={18} fontWeight='bold' letterSpacing={8}>Name: { name }</Box>
+                        <Box fontSize={18} fontWeight='bold' letterSpacing={8}>Email: { userEmail }</Box>
+                    </Typography>
                 </Grid>
             </Paper>
 
@@ -119,4 +122,4 @@ function MessageWindow(props) {
     )
 }
 
-export default MessageWindow;
+export default AccountWindow;

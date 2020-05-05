@@ -26,6 +26,8 @@ import Fade from "@material-ui/core/Fade";
 import EmptyMessageWindow from "./EmptyMessageWindow";
 import ChatWindow from "./ChatWindow";
 import { useAppContext } from "../libs/contextLib";
+import AccountButton from "../components/AccountButton";
+import AccountWindow from "./AccountWindow";
 
 const drawerWidth = 240;
 
@@ -41,6 +43,7 @@ const useStyles = makeStyles(theme => ({
         //paddingTop: '10%',
         height: '100vh',
         maxHeight: '100vh',
+        minHeight: '100vh',
         width: '100vw',
         '& > *': {
             //margin: theme.spacing(1),
@@ -109,13 +112,13 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
     },
     navButtons: {
-        marginLeft: '3px',
+        //marginLeft: '3px',
     },
     button: {
         background: Grey[900],
         borderRadius: '100%',
         border: 0,
-        color: Teal[300],
+        color: Teal.A400,
         minHeight: 60,
         minWidth: 60,
         maxHeight: 60,
@@ -128,13 +131,15 @@ const useStyles = makeStyles(theme => ({
         boxShadow: '3px rgb(0,0,0,0.35)',
 
         '&:hover': {
-            boxShadow: '0px 0px 21px 3px rgba(0,150,136,0.50)',
+            /*boxShadow: '0px 0px 21px 3px rgba(0,150,136,0.50)',*/
+            boxShadow: '0px 0px 21px 3px rgba(29,233,182,0.50)',
             transition: 'opacity 0.3s ease-in-out',
             //backgroundColor: Grey[800],
         },
 
         '&:focus': {
-            boxShadow: '0px 0px 21px 6px rgba(0,150,136,1)',
+            /*boxShadow: '0px 0px 21px 3px rgba(0,150,136,1)',*/
+            boxShadow: '0px 0px 21px 3px rgba(29,233,182,1)',
             transition: 'opacity 0.3s ease-in-out',
         },
     },
@@ -199,7 +204,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
 function HomeWindow(props) {
     const classes = useStyles();
     const theme = useTheme();
@@ -223,7 +227,7 @@ function HomeWindow(props) {
 
     return (
         <div className={classes.root}>
-            <Grid container xs={12} directon={'column'}>
+            <Grid container xs={12} direction={'column'}>
 
                 {/* APPBAR CONTAINER */}
                 <Grid container xs={12}>
@@ -327,12 +331,13 @@ function HomeWindow(props) {
                                 {/*))}*/}
                             </List>
                             <Divider />
-                            <Grid container direction='column' xs={7}
+                            <Grid container direction='row' xs={2}
                                   alignContent={'center'}
                                   justify={'flex-end'}
-                                  classes={'navButtons'}>
+                                  className={classes.navButtons}>
                                 <Grid container direction='row' xs={1}>
                                     <Home> </Home>
+                                    <AccountButton> </AccountButton>
                                 </Grid>
                             </Grid>
                         </Drawer>
@@ -347,31 +352,20 @@ function HomeWindow(props) {
                             </Route>
                             <Route path='/home/class-1'>
                                 <ChatWindow />
-                                <Button>{ name }</Button>
                             </Route>
                             <Route path='/home/class-2'>
                                 <ChatWindow />
-                                <Button>{ name }</Button>
                             </Route>
                             <Route path='/home/class-3'>
                                 <ChatWindow />
-                                <Button>{ name }</Button>
                             </Route>
                             <Route path='/home/class-4'>
                                 <ChatWindow />
-                                <Button>{ name }</Button>
+                            </Route>
+                            <Route path='/home/account'>
+                                <AccountWindow />
                             </Route>
                         </Switch>
-
-                        {/*<MessageWindow />*/}
-                        {/*<Routes />*/}
-                        {/*<LoginWindow />*/}
-                        {/*<Switch>
-                            <Route path="/home/class-1" component={PageShell(MessageWindowOne)}/>
-                            <Route path="/home/class-2" component={PageShell(MessageWindowTwo)}/>
-                            <Route path="/home/class-3" component={PageShell(MessageWindowThree)}/>
-                            <Route path="/home/class-4" component={PageShell(MessageWindowFour)}/>
-                        </Switch>*/}
                     </Grid>
                 </Grid>
             </Grid>
