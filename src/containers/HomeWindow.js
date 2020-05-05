@@ -33,6 +33,7 @@ import MessageWindow4 from "./MessageWindow4";
 import Fade from "@material-ui/core/Fade";
 import { BrowserRouter as Router } from "react-router-dom";
 import EmptyMessageWindow from "./EmptyMessageWindow";
+import ChatWindow from "./ChatWindow";
 
 const drawerWidth = 240;
 
@@ -206,54 +207,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-/*function PageShell(Page, previous) {
-    return props => (
-        <div className="page">
-            <ReactCSSTransitionGroup
-                transitionAppear={true}
-                transitionAppearTimeout={600}
-                transitionEnterTimeout={600}
-                transitionLeaveTimeout={600}
-                transitionName={props.match.path === "/class-1" ? "SlideIn" : "SlideOut"}
-            >
-                <Page {...props} />
-            </ReactCSSTransitionGroup>
-        </div>
-    );
-};*/
 
-/*function MessageWindow() {
-    const classes = useStyles();
-
-    const [content, setContent] = useState("Home");
-
-    return (
-        <Grid container xs={12} className={classes.root}>
-            <Paper elevation={4} className={classes.chatArea}>
-                <Grid container xs={12} direction={'column'}>
-                    <Typography variant='title' color='secondary'>
-                        <Box fontSize={24} fontWeight='bold' letterSpacing={8}>{content}</Box>
-                        {/!*<Typography variant='subtitle2' color='secondary'>
-                            <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
-                        </Typography>*!/}
-                    </Typography>
-                    <Grid container xs={11} className={classes.textGrid}>
-                        <Grid container xs={11} className={classes.messageGrid}>
-                            <span className={classes.textRight}>Hey!</span>
-                            <span className={classes.textLeft}>This is sample text!</span>
-                        </Grid>
-                        <TextField id='outlined-basic' label='Message'
-                                   variant='outlined'
-                                   className={classes.textField}
-                                   InputLabelProps={classes.textLabel}/>
-                    </Grid>
-                </Grid>
-            </Paper>
-        </Grid>
-    )
-}*/
-
-function HomeWindow({ match }) {
+function HomeWindow(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -262,30 +217,6 @@ function HomeWindow({ match }) {
 
     const history = useHistory();
 
-
-    //let match = useRouteMatch();
-
-    /*function MessageWindowOne(){
-        return (
-            <MessageWindow setContent={"Class 1"}/>
-        );
-    }
-    function MessageWindowTwo(){
-        return (
-            <MessageWindow content={"Class 2"}/>
-        );
-    }
-    function MessageWindowThree(){
-        return (
-            <MessageWindow content={"Class 3"}/>
-        );
-    }
-    function MessageWindowFour(){
-        return (
-            <MessageWindow content={"Class 4"}/>
-        );
-    }*/
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -293,8 +224,6 @@ function HomeWindow({ match }) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-
-
 
     return (
         <div className={classes.root}>
@@ -424,22 +353,22 @@ function HomeWindow({ match }) {
                             </Route>
                             <Route path='/home/class-1'>
                                 <Fade in={true} timeout={1000}>
-                                    <MessageWindow buttonId={'Class-1'}/>
+                                    <ChatWindow />
                                 </Fade>
                             </Route>
                             <Route path='/home/class-2'>
                                 <Fade in={true} timeout={1000}>
-                                    <MessageWindow2 buttonId={'Class-2'}/>
+                                    <ChatWindow />
                                 </Fade>
                             </Route>
                             <Route path='/home/class-3'>
                                 <Fade in={true} timeout={1000}>
-                                    <MessageWindow3 buttonId={'Class-3'}/>
+                                    <ChatWindow />
                                 </Fade>
                             </Route>
                             <Route path='/home/class-4'>
                                 <Fade in={true} timeout={1000}>
-                                    <MessageWindow4 buttonId={'Class-4'}/>
+                                    <ChatWindow />
                                 </Fade>
                             </Route>
                         </Switch>

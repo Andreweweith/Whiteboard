@@ -44,7 +44,9 @@
   },
   "devDependencies": {
     "bcrypt": "^4.0.1",
+    "clsx": "^1.1.0",
     "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2",
     "react-addons-css-transition-group": "^15.6.2",
     "typescript": "^3.8.3"
   }

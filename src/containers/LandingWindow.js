@@ -12,6 +12,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Checkbox from "@material-ui/core/Checkbox";
 import Fade from "@material-ui/core/Fade";
+import {Link, Route, useHistory, Switch } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -80,7 +81,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function LoginWindow(props) {
+function LandingWindow(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -139,70 +140,21 @@ function LoginWindow(props) {
                 <Paper elevation={4} className={classes.loginArea}>
                     <Grid container xs={11} className={classes.textGrid}>
                         <Typography variant='title' color='secondary'>
-                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD LOGIN</Box>
+                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD HOME</Box>
                             <Typography variant='subtitle2' color='secondary'>
                                 <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
                             </Typography>
                         </Typography>
-                        <form className={classes.textField} onSubmit={handleSubmit} noValidate autoComplete={"off"}>
-                            <Fade in={true} timeout={2000}>
-                                <TextField
-                                    variant={"outlined"}
-                                    margin={"normal"}
-                                    required
-                                    fullWidth
-                                    id={"email"}
-                                    label={"Email"}
-                                    name={"email"}
-                                    autoComplete={"email"}
-                                    autoFocus
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </Fade>
-                            <Fade in={true} timeout={3000}>
-                                <TextField
-                                    variant="outlined"
-                                    margin="normal"
-                                    required
-                                    fullWidth
-                                    name="password"
-                                    label="Password"
-                                    type="password"
-                                    id="password"
-                                    autoComplete="current-password"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}
-                                />
-                            </Fade>
-                            <Fade in={true} timeout={4000}>
-                                <FormControlLabel
-                                    control={<Checkbox value="remember" color="primary" />}
-                                    label="Remember me"
-                                />
-                            </Fade>
-                            <Fade in={true} timeout={5000}>
-                                <Button
-                                    type="submit"
-                                    fullWidth
-                                    variant="contained"
-                                    color="primary"
-                                    className={classes.submit}
-                                    block
-                                    disabled={!validateForm()}
-                                >
-                                    Sign In
-                                </Button>
-                            </Fade>
-                            {/*<FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="component-outlined">Email</InputLabel>
-                            <Input id="component-outlined" value={email} onChange={handleChange} />
-                        </FormControl>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="component-outlined">Password</InputLabel>
-                            <Input id="component-outlined" value={password} onChange={handleChange} />
-                        </FormControl>*/}
-                        </form>
+                        <Button
+                            component={Link} to={'/login'}
+                            className={classes.button}>
+                            LOGIN
+                        </Button>
+                        <Button
+                            component={Link} to={'/signup'}
+                            className={classes.button}>
+                            SIGNUP
+                        </Button>
                     </Grid>
                 </Paper>
             </Fade>
@@ -210,4 +162,4 @@ function LoginWindow(props) {
     )
 }
 
-export default LoginWindow;
+export default LandingWindow;

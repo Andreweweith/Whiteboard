@@ -80,8 +80,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function LoginWindow(props) {
+function SignupWindow(props) {
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
 
     const [error, setError] = useState(false);
@@ -98,7 +99,7 @@ function LoginWindow(props) {
         if(text == "{\"message\":\"User successfully logged in!\"}")
             {
                 console.log("Got to this point");
-                props.history.push("/home");
+                props.history.push("/login");
             }
         else {
             document.getElementById("email").setAttribute("error", "");
@@ -139,7 +140,7 @@ function LoginWindow(props) {
                 <Paper elevation={4} className={classes.loginArea}>
                     <Grid container xs={11} className={classes.textGrid}>
                         <Typography variant='title' color='secondary'>
-                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD LOGIN</Box>
+                            <Box fontSize={24} fontWeight='bold' letterSpacing={8}>WHITEBOARD SIGNUP</Box>
                             <Typography variant='subtitle2' color='secondary'>
                                 <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
                             </Typography>
@@ -160,6 +161,21 @@ function LoginWindow(props) {
                                     onChange={e => setEmail(e.target.value)}
                                 />
                             </Fade>
+                            <Fade in={true} timeout={2000}>
+                                <TextField
+                                    variant={"outlined"}
+                                    margin={"normal"}
+                                    required
+                                    fullWidth
+                                    id={"name"}
+                                    label={"Name"}
+                                    name={"name"}
+                                    autoComplete={"name"}
+                                    autoFocus
+                                    value={name}
+                                    onChange={e => setName(e.target.value)}
+                                />
+                            </Fade>
                             <Fade in={true} timeout={3000}>
                                 <TextField
                                     variant="outlined"
@@ -175,11 +191,8 @@ function LoginWindow(props) {
                                     onChange={e => setPassword(e.target.value)}
                                 />
                             </Fade>
-                            <Fade in={true} timeout={4000}>
-                                <FormControlLabel
-                                    control={<Checkbox value="remember" color="primary" />}
-                                    label="Remember me"
-                                />
+                            <Fade in={true} timeout={5000}>
+                                <span>&nbsp;&nbsp;</span>
                             </Fade>
                             <Fade in={true} timeout={5000}>
                                 <Button
@@ -191,7 +204,7 @@ function LoginWindow(props) {
                                     block
                                     disabled={!validateForm()}
                                 >
-                                    Sign In
+                                    Sign Up
                                 </Button>
                             </Fade>
                             {/*<FormControl className={classes.formControl}>
@@ -210,4 +223,4 @@ function LoginWindow(props) {
     )
 }
 
-export default LoginWindow;
+export default SignupWindow;
