@@ -1,3 +1,5 @@
+/* Created and written by Andrew Weith */
+
 import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grey from "@material-ui/core/colors/grey";

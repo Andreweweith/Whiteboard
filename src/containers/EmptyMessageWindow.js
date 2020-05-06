@@ -1,3 +1,5 @@
+/* Created and written by Andrew Weith */
+
 import React, {useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grey from "@material-ui/core/colors/grey";
@@ -98,20 +100,7 @@ function MessageWindow(props) {
                 <Grid container xs={12} direction={'column'}>
                     <Typography variant='title' color='secondary'>
                         <Box fontSize={24} fontWeight='bold' letterSpacing={8}>Please select a class.</Box>
-                        {/*<Typography variant='subtitle2' color='secondary'>
-                            <Box fontStyle='italic' fontSize={18}>"It's not Blackboard"</Box>
-                        </Typography>*/}
                     </Typography>
-                    {/*<Grid container xs={11} className={classes.textGrid}>
-                        <Grid container xs={11} className={classes.messageGrid}>
-                            <span className={classes.textRight}>Hey!</span>
-                            <span className={classes.textLeft}>This is sample text!</span>
-                        </Grid>
-                        <TextField id='outlined-basic' label='Message'
-                                   variant='outlined'
-                                   className={classes.textField}
-                                   InputLabelProps={classes.textLabel}/>
-                    </Grid>*/}
                 </Grid>
             </Paper>
 

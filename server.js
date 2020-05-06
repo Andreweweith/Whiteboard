@@ -1,3 +1,5 @@
+/* Created and written by Connor Walsh { start } ---------> */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -10,6 +12,8 @@ app.use(cors());
 const WebSocket = require('ws');
 
 mongoose.connect(MONGOURL).then(() => console.log("MongoDB Connected")).catch(error => console.log(error));
+
+/* Schemas written by Connor Walsh, designed in part with Alec Comley and Andrew Weith */
 
 const userSchema = mongoose.Schema({
 
@@ -132,6 +136,12 @@ app.post("/pullmessages/", async (req, res) => {
     }
 });
 
+/* <--------- { end } Contributed by Connor Walsh */
+
+
+
+/* Code used from project found at https://github.com/bitlabstudio/blogpost-react-websocket-chat ------> */
+
 const wss = new WebSocket.Server({ port: 3030 });
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(data) {
@@ -143,8 +153,16 @@ wss.on('connection', function connection(ws) {
     });
 });
 
+/* <------ */
+
+
+
+/* Contributed by Connor Walsh { start } ---------> */
+
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
     console.log('Server listening on ' + port);
 })
+
+/*<--------- { end } Contributed by Connor Walsh */

@@ -1,3 +1,5 @@
+/* Created and written by Andrew Weith */
+
 import React from 'react';
 
 export default function NotFound() {

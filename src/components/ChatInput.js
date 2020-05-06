@@ -1,3 +1,5 @@
+/* Styled and modified by Andrew Weith */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import TextField from "@material-ui/core/TextField";
@@ -116,7 +118,7 @@ const useStyles = theme => ({
     }
 });
 
-
+/* Class component modified from project found at https://github.com/bitlabstudio/blogpost-react-websocket-chat */
 class ChatInput extends Component {
     static propTypes = {
         onSubmitMessage: PropTypes.func.isRequired,

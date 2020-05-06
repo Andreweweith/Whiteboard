@@ -1,3 +1,6 @@
+/* Created and written by Andrew Weith */
+/* Used snippets of code for theming available at https://material-ui.com/ and for React Context from https://serverless-stack.com/ */
+
 import React, { useState } from 'react';
 import './App.scss';
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -27,7 +30,6 @@ function App() {
         [prefersDarkMode],
     );
 
-    // CssBaseline is literally just to get the background color change to apply
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
